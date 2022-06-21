@@ -5,11 +5,13 @@ import {createTexture2D, ensureFramebufferAttachment, initEnvGL} from './test_ut
 const gl = gles.createWebGLRenderingContext({});
 const gl2 = gl as WebGL2RenderingContext;
 
-gl.getExtension('OES_texture_float');
-gl.getExtension('EXT_color_buffer_float');
+// gl.getExtension('OES_texture_float');
+// gl.getExtension('EXT_color_buffer_float');
 
 console.log('VERSION: ' + gl.getParameter(gl.VERSION));
 console.log('RENDERER: ' + gl.getParameter(gl.RENDERER));
+console.log('VENDOR: ' + gl.getParameter(gl.VENDOR));
+
 
 initEnvGL(gl);  // Don't worry about buffers in this demo
 

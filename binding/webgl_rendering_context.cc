@@ -2640,7 +2640,19 @@ napi_value WebGLRenderingContext::GetParameter(napi_env env,
       // TODO(kreeger): Add more of these
 
     default:
-      NAPI_THROW_ERROR(env, "Unsupported getParameter() option");
+      {
+            const GLubyte *str = context->eglContextWrapper_->glGetString(name);
+            if (str) {
+              const char *str_c_str = reinterpret_cast<const char *>(str);
+              napi_value str_value;
+              nstatus = napi_create_string_utf8(env, str_c_str, strlen(str_c_str),
+                                                &str_value);
+              ENSURE_NAPI_OK_RETVAL(env, nstatus, nullptr);
+
+              return str_value;
+            }
+            break;
+          }
   }
 
 #if DEBUG

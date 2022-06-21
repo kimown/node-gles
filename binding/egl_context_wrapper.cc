@@ -30,7 +30,7 @@ EGLContextWrapper::EGLContextWrapper(napi_env env,
                                      const GLContextOptions& context_options) {
   InitEGL(env, context_options);
   BindProcAddresses();
-  RefreshGLExtensions();
+//  RefreshGLExtensions();
 
 #if DEBUG
   std::cerr << "** GL_EXTENSIONS:" << std::endl;
@@ -45,22 +45,28 @@ EGLContextWrapper::EGLContextWrapper(napi_env env,
 
 void EGLContextWrapper::InitEGL(napi_env env,
                                 const GLContextOptions& context_options) {
-  std::vector<EGLAttrib> display_attributes;
-  display_attributes.push_back(EGL_PLATFORM_ANGLE_TYPE_ANGLE);
-  // Most NVIDIA drivers will not work properly with
-  // EGL_PLATFORM_ANGLE_TYPE_OPENGLES_ANGLE, only enable this option on ARM
-  // devices for now:
-#if defined(__arm__)
-  display_attributes.push_back(EGL_PLATFORM_ANGLE_TYPE_OPENGLES_ANGLE);
-#else
-  display_attributes.push_back(EGL_PLATFORM_ANGLE_TYPE_DEFAULT_ANGLE);
-#endif
-
-  display_attributes.push_back(EGL_NONE);
-
+//  std::vector<EGLAttrib> display_attributes;
+//  display_attributes.push_back(EGL_PLATFORM_ANGLE_TYPE_ANGLE);
+//  // Most NVIDIA drivers will not work properly with
+//  // EGL_PLATFORM_ANGLE_TYPE_OPENGLES_ANGLE, only enable this option on ARM
+//  // devices for now:
+//#if defined(__arm__)
+//  display_attributes.push_back(EGL_PLATFORM_ANGLE_TYPE_OPENGLES_ANGLE);
+//#else
+//  display_attributes.push_back(EGL_PLATFORM_ANGLE_TYPE_DEFAULT_ANGLE);
+//#endif
+//
+//  display_attributes.push_back(EGL_NONE);
+    EGLAttrib DisplayAttributes[] =
+            {
+                    EGL_PLATFORM_ANGLE_TYPE_ANGLE,
+                    EGL_PLATFORM_ANGLE_TYPE_VULKAN_ANGLE,
+                    EGL_NONE
+            };
   display = eglGetPlatformDisplay(EGL_PLATFORM_ANGLE_ANGLE, nullptr,
-                                  &display_attributes[0]);
+                                  DisplayAttributes);
   if (display == EGL_NO_DISPLAY) {
+      printf("xxxxxx----\n");
     // TODO(kreeger): This is the default path for Mac OS. Determine why egl has
     // to be initialized this way on Mac OS.
     display = eglGetDisplay(EGL_DEFAULT_DISPLAY);
@@ -72,10 +78,16 @@ void EGLContextWrapper::InitEGL(napi_env env,
 
   EGLint major;
   EGLint minor;
+    printf("01-----\n");
   if (!eglInitialize(display, &major, &minor)) {
+      printf("failed???\n");
+
     NAPI_THROW_ERROR(env, "Could not initialize display");
     return;
   }
+      printf("03-----\n");
+
+    printf("%d %d\n", major, minor);
 
   egl_extensions = std::unique_ptr<GLExtensionsWrapper>(
       new GLExtensionsWrapper(eglQueryString(display, EGL_EXTENSIONS)));

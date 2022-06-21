@@ -4,7 +4,7 @@ node-gyp rebuild
 echo $DISPLAY
 ANGLE_DEFAULT_PLATFORM=vulkan LD_LIBRARY_PATH=/home/h/com/mdk/angle/out/Debug yarn ts-node src/tests/float_texture_upload_test.ts
 
-```
+``` amd
 WARN: RendererVk.cpp:359 (DebugUtilsMessenger): [ Loader Message ] Device Extension: VK_GOOGLE_user_type (/opt/amdgpu-pro/lib/x86_64-linux-gnu/amdvlk64.so) version 0.0.1
                             Object: 0x4cada90 (type = Instance(1))
 
@@ -25,6 +25,12 @@ Done in 0.46s.
 
 ```
 
+```nvidia
+VERSION: OpenGL ES 3.2 NVIDIA 450.80.02
+RENDERER: Tesla T4/PCIe/SSE2
+buffer:  Float32Array(4) [ 0.5, 1.5, 2.5, 3.5 ]
+Done in 0.96s.
 
+```
 
 // https://zhuanlan.zhihu.com/p/511044115

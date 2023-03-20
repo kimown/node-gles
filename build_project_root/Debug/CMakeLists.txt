@@ -37,9 +37,9 @@ list(APPEND nodejs_gl_binding__include_dirs
   "/home/google/.cache/node-gyp/16.19.0/deps/uv/include"
   "/home/google/.cache/node-gyp/16.19.0/deps/zlib"
   "/home/google/.cache/node-gyp/16.19.0/deps/v8/include"
-#  "${CMAKE_CURRENT_LIST_DIR}/../../.."
+#  "${CMAKE_CURRENT_LIST_DIR}/./.."
   "/media/google/Data/com/github/node-gles/deps"
-  "/media/google/Data/com/github/node-gles/deps/angle/include")
+  )
 set_property(TARGET nodejs_gl_binding APPEND PROPERTY INCLUDE_DIRECTORIES ${nodejs_gl_binding__include_dirs})
 set_target_properties(nodejs_gl_binding PROPERTIES COMPILE_DEFINITIONS "NODE_GYP_MODULE_NAME=nodejs_gl_binding;USING_UV_SHARED=1;USING_V8_SHARED=1;V8_DEPRECATION_WARNINGS=1;V8_DEPRECATION_WARNINGS;V8_IMMINENT_DEPRECATION_WARNINGS;_GLIBCXX_USE_CXX11_ABI=1;_LARGEFILE_SOURCE;_FILE_OFFSET_BITS=64;__STDC_FORMAT_MACROS;OPENSSL_NO_PINSHARED;OPENSSL_THREADS;BUILDING_NODE_EXTENSION;DEBUG;_DEBUG;V8_ENABLE_CHECKS;")
 set_target_properties(nodejs_gl_binding PROPERTIES COMPILE_FLAGS "-fPIC -pthread -Wall -Wextra -Wno-unused-parameter -m64 -g -O0 -fno-rtti -fno-exceptions -std=gnu++14 ")

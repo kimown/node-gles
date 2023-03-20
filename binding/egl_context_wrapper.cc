@@ -433,7 +433,7 @@ void EGLContextWrapper::RefreshGLExtensions() {
 
   angle_requestable_extensions = std::unique_ptr<GLExtensionsWrapper>(
       new GLExtensionsWrapper(reinterpret_cast<const char*>(
-          glGetString(GL_REQUESTABLE_EXTENSIONS_ANGLE))));
+          glGetString(GL_EXTENSIONS))));
 }
 
 EGLContextWrapper::~EGLContextWrapper() {

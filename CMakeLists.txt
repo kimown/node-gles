@@ -14,4 +14,4 @@ cmake_minimum_required(VERSION 3.24)
 #        )
 #add_executable(node_gles binding/binding.cc)
 
-#include(${CMAKE_CURRENT_SOURCE_DIR}/build/Debug/CMakeLists.txt)
+include(${CMAKE_CURRENT_SOURCE_DIR}/build_project_root/Debug/CMakeLists.txt)

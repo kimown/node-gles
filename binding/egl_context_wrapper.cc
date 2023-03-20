@@ -33,7 +33,7 @@ EGLContextWrapper::EGLContextWrapper(napi_env env,
   RefreshGLExtensions();
 
 #if DEBUG
-  std::cerr << "** GL_EXTENSIONS:" << std::endl;
+  std::cerr << "** 111GL_EXTENSIONS:" << std::endl;
   gl_extensions->LogExtensions();
   std::cerr << std::endl;
 
@@ -61,7 +61,7 @@ void EGLContextWrapper::InitEGL(napi_env env,
   egl_extensions = std::unique_ptr<GLExtensionsWrapper>(
       new GLExtensionsWrapper(eglQueryString(display, EGL_EXTENSIONS)));
 #if DEBUG
-  std::cerr << "** EGL_EXTENSIONS:" << std::endl;
+  std::cerr << "** 222EGL_EXTENSIONS:" << std::endl;
   egl_extensions->LogExtensions();
   std::cerr << std::endl;
 #endif

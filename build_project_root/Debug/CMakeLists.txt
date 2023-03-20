@@ -16,11 +16,11 @@ set(CMAKE_NINJA_FORCE_RESPONSE_FILE 1)
 set(TARGET "nodejs_gl_binding")
 set(TOOLSET "target")
 list(APPEND nodejs_gl_binding__cxx_srcs
-  "../../binding/binding.cc"
-  "../../binding/egl_context_wrapper.cc"
-  "../../binding/webgl_extensions.cc"
-  "../../binding/webgl_rendering_context.cc"
-  "../../binding/webgl_sync.cc")
+  "/media/google/Data/com/github/node-gles/binding/binding.cc"
+  "/media/google/Data/com/github/node-gles/binding/egl_context_wrapper.cc"
+  "/media/google/Data/com/github/node-gles/binding/webgl_extensions.cc"
+  "/media/google/Data/com/github/node-gles/binding/webgl_rendering_context.cc"
+  "/media/google/Data/com/github/node-gles/binding/webgl_sync.cc")
 link_directories()
 add_library(nodejs_gl_binding MODULE ${nodejs_gl_binding__cxx_srcs})
 set_target_properties(nodejs_gl_binding PROPERTIES EXCLUDE_FROM_ALL "FALSE")
@@ -37,7 +37,7 @@ list(APPEND nodejs_gl_binding__include_dirs
   "/home/google/.cache/node-gyp/16.19.0/deps/uv/include"
   "/home/google/.cache/node-gyp/16.19.0/deps/zlib"
   "/home/google/.cache/node-gyp/16.19.0/deps/v8/include"
-  "${CMAKE_CURRENT_LIST_DIR}/../../.."
+#  "${CMAKE_CURRENT_LIST_DIR}/../../.."
   "/media/google/Data/com/github/node-gles/deps"
   "/media/google/Data/com/github/node-gles/deps/angle/include")
 set_property(TARGET nodejs_gl_binding APPEND PROPERTY INCLUDE_DIRECTORIES ${nodejs_gl_binding__include_dirs})

@@ -999,6 +999,21 @@ napi_status WebGLRenderingContext::NewInstance(napi_env env,
   return napi_ok;
 }
 
+inline bool EnsureNapiOK233(napi_env env, napi_status status) {
+    if (status != napi_ok) {
+        const napi_extended_error_info* error_info = 0;
+        napi_get_last_error_info(env, &error_info);
+
+        std::ostringstream oss;
+        if (error_info->error_message) {
+            oss << "Invalid napi_status: " << error_info->error_message;
+        } else {
+            oss << "Invalid napi_status: UNKNOWN";
+        }
+    }
+    return status == napi_ok;
+}
+
 /* static */
 napi_value WebGLRenderingContext::InitInternal(napi_env env,
                                                napi_callback_info info) {
@@ -1033,6 +1048,7 @@ napi_value WebGLRenderingContext::InitInternal(napi_env env,
   ENSURE_VALUE_IS_NOT_NULL_RETVAL(env, context, nullptr);
 
   nstatus = napi_wrap(env, js_this, context, Cleanup, nullptr, &context->ref_);
+        EnsureNapiOK233(env, nstatus);
   ENSURE_NAPI_OK_RETVAL(env, nstatus, nullptr);
 
   return js_this;

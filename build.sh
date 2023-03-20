@@ -1,0 +1,1 @@
+/home/google/.tnvm/versions/node/v16.19.0/bin/node /home/google/.tnvm/versions/node/v16.19.0/bin/node-gyp rebuild --debug

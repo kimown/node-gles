@@ -45,30 +45,11 @@ EGLContextWrapper::EGLContextWrapper(napi_env env,
 
 void EGLContextWrapper::InitEGL(napi_env env,
                                 const GLContextOptions& context_options) {
-  std::vector<EGLAttrib> display_attributes;
-  display_attributes.push_back(EGL_PLATFORM_ANGLE_TYPE_ANGLE);
-  // Most NVIDIA drivers will not work properly with
-  // EGL_PLATFORM_ANGLE_TYPE_OPENGLES_ANGLE, only enable this option on ARM
-  // devices for now:
-#if defined(__arm__)
-  display_attributes.push_back(EGL_PLATFORM_ANGLE_TYPE_OPENGLES_ANGLE);
-#else
-  display_attributes.push_back(EGL_PLATFORM_ANGLE_TYPE_DEFAULT_ANGLE);
-#endif
-
-  display_attributes.push_back(EGL_NONE);
-
-  display = eglGetPlatformDisplay(EGL_PLATFORM_ANGLE_ANGLE, nullptr,
-                                  &display_attributes[0]);
-  if (display == EGL_NO_DISPLAY) {
-    // TODO(kreeger): This is the default path for Mac OS. Determine why egl has
-    // to be initialized this way on Mac OS.
     display = eglGetDisplay(EGL_DEFAULT_DISPLAY);
     if (display == EGL_NO_DISPLAY) {
-      NAPI_THROW_ERROR(env, "No display");
-      return;
+        NAPI_THROW_ERROR(env, "No display");
+        return;
     }
-  }
 
   EGLint major;
   EGLint minor;

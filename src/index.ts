@@ -19,7 +19,7 @@
 import bindings = require('bindings');
 import {NodeJsGlBinding} from './binding';
 
-const binding = bindings('nodejs_gl_binding') as NodeJsGlBinding;
+const binding = bindings('../build_project_root/Debug/cmake-build-debug/nodejs_gl_binding.node') as NodeJsGlBinding;
 
 
 interface ContextArguments {

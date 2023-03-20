@@ -37,11 +37,11 @@
       [
         'OS=="linux"', {
           'libraries' : [
-            '-Wl,-rpath,<@(angle_lib_dir)',
+            '-Wl,-rpath',
             '-lGLESv2',
             '-lEGL',
           ],
-          'library_dirs' : ['<(angle_lib_dir)'],
+          'library_dirs' : [],
         }
       ],
       [

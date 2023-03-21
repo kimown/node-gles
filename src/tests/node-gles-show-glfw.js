@@ -53,3 +53,6 @@ async function main() {
 }
 // Start
 main();
+
+// https://discourse.glfw.org/t/trouble-creating-egl-glesv2-window-on-linux/583
+// 必须使用mesa https://github.com/glfw/glfw/issues/19

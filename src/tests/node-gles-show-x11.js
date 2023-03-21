@@ -34,6 +34,8 @@ x11.createClient(function(err, display) {
         }
     );
 
+    console.log('VERSION: ' + gl.getParameter(gl.VERSION));
+    console.log('RENDERER: ' + gl.getParameter(gl.RENDERER));
 
     X.MapWindow(wid);
     var gc = X.AllocID();

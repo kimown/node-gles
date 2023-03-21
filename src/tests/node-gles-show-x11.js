@@ -54,12 +54,20 @@ x11.createClient(function(err, display) {
       console.log(e);
     });
 
-    while (1) {
-      gl.clearColor(0.0, 1.0, 0.0, 1.0);
+    let i = 1
+    setInterval(()=>{
+      if(i%2===0){
+        gl.clearColor(1.0, 0.0, 0.0, 1.0);
+      } else {
+        gl.clearColor(0.0, 1.0, 0.0, 1.0);
+      }
       gl.clear(gl.COLOR_BUFFER_BIT | gl.DEPTH_BUFFER_BIT)
       gl.RefreshGLExtensions2333(0.0, 1.0, 0.0, 1.0)
-      gl.flush()
-    }
+      i+=1
+    },1000)
+    // while (1) {
+    //
+    // }
   } else {
     console.log(err);
   }

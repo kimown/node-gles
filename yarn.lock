@@ -456,7 +456,7 @@
   dependencies:
     "wrappy" "1"
 
-"os-homedir@^1.0.0":
+"os-homedir@^1.0.0", "os-homedir@^1.0.1":
   "integrity" "sha1-/7xJiDNuDoM94MFox+8VISGqf7M="
   "resolved" "https://registry.npmjs.org/os-homedir/-/os-homedir-1.0.2.tgz"
   "version" "1.0.2"
@@ -716,6 +716,13 @@
   "integrity" "sha1-tSQ9jz7BqjXxNkYFvA0QNuMKtp8="
   "resolved" "https://registry.npmjs.org/wrappy/-/wrappy-1.0.2.tgz"
   "version" "1.0.2"
+
+"x11@^2.3.0":
+  "integrity" "sha512-Ep4DbqZkVHvZNVht+vvELcfdpGKnfh2kZuKdXqyZdtJx3UdvgUGrMQ9lwPNV33tDs86MF4YagC6+E2fZXikF6A=="
+  "resolved" "http://bnpm.byted.org/x11/-/x11-2.3.0.tgz"
+  "version" "2.3.0"
+  dependencies:
+    "os-homedir" "^1.0.1"
 
 "y18n@^3.2.1":
   "integrity" "sha1-bRX7qITAhnnA136I53WegR4H+kE="

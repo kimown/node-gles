@@ -1,0 +1,9 @@
+<toolSet name="External Tools">
+  <tool name="build" showInMainMenu="false" showInEditor="false" showInProject="false" showInSearchPopup="false" disabled="false" useConsole="true" showConsoleOnStdOut="false" showConsoleOnStdErr="false" synchronizeAfterRun="true">
+    <exec>
+      <option name="COMMAND" value="$USER_HOME$/.tnvm/versions/node/v16.19.0/bin/node" />
+      <option name="PARAMETERS" value="$USER_HOME$/.tnvm/versions/node/v16.19.0/bin/node-gyp rebuild --debug" />
+      <option name="WORKING_DIRECTORY" value="/media/google/Data/com/github/node-gles" />
+    </exec>
+  </tool>
+</toolSet>

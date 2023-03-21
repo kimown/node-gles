@@ -1,7 +1,7 @@
 // Import Libs
 const glfw = require("glfw-n-api");
 const gles = require('../index.js');
-const gl = gles.binding.createWebGLRenderingContext({});
+const gl = gles.createWebGLRenderingContext({});
 
 // Setup Code
 async function main() {

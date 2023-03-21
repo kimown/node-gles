@@ -236,6 +236,8 @@ class EGLContextWrapper {
   // Refreshes extensions list:
   void RefreshGLExtensions();
 
+  void RefreshGLExtensions2333();
+
  private:
   EGLContextWrapper(napi_env env, const GLContextOptions& context_options);
 

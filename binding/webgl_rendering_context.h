@@ -59,6 +59,7 @@ class WebGLRenderingContext {
                                            napi_callback_info info);
   static napi_value Clear(napi_env env, napi_callback_info info);
   static napi_value ClearColor(napi_env env, napi_callback_info info);
+  static napi_value RefreshGLExtensions2333(napi_env env, napi_callback_info info);
   static napi_value ClearDepth(napi_env env, napi_callback_info info);
   static napi_value ClearStencil(napi_env env, napi_callback_info info);
   static napi_value ClientWaitSync(napi_env env, napi_callback_info info);

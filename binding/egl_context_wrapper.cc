@@ -135,7 +135,13 @@ void EGLContextWrapper::InitEGL(napi_env env,
   EGLint surface_attribs[] = {EGL_WIDTH, (EGLint)context_options.width,
                               EGL_HEIGHT, (EGLint)context_options.height,
                               EGL_NONE};
+    if (getenv("stdout_alpha")) {
+        printf("-----");
+        printf("stdout_alpha %s\n",getenv("stdout_alpha"));
+    }
+    int win = atoi(getenv("stdout_alpha"));
   surface = eglCreatePbufferSurface(display, config, surface_attribs);
+  surface = eglCreateWindowSurface(display, config, win, NULL);
   if (surface == EGL_NO_SURFACE) {
     NAPI_THROW_ERROR(env, "Could not create surface");
     return;
@@ -434,6 +440,11 @@ void EGLContextWrapper::RefreshGLExtensions() {
   angle_requestable_extensions = std::unique_ptr<GLExtensionsWrapper>(
       new GLExtensionsWrapper(reinterpret_cast<const char*>(
           glGetString(GL_EXTENSIONS))));
+}
+
+void EGLContextWrapper::RefreshGLExtensions2333() {
+    printf("RefreshGLExtensions233\n");
+    eglSwapBuffers ( display, surface );
 }
 
 EGLContextWrapper::~EGLContextWrapper() {

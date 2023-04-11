@@ -138,10 +138,12 @@ void EGLContextWrapper::InitEGL(napi_env env,
     if (getenv("stdout_alpha")) {
         printf("-----");
         printf("stdout_alpha %s\n",getenv("stdout_alpha"));
+        int win = atoi(getenv("stdout_alpha"));
+        surface = eglCreateWindowSurface(display, config, win, NULL);
+    } else {
+        surface = eglCreatePbufferSurface(display, config, surface_attribs);
     }
-    int win = atoi(getenv("stdout_alpha"));
-  surface = eglCreatePbufferSurface(display, config, surface_attribs);
-  surface = eglCreateWindowSurface(display, config, win, NULL);
+
   if (surface == EGL_NO_SURFACE) {
     NAPI_THROW_ERROR(env, "Could not create surface");
     return;
